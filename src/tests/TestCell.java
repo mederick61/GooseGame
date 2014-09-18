@@ -1,0 +1,49 @@
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import Source.Cell;
+import Source.Player;
+public class TestCell {
+
+	@Test
+	public void testIndex() {
+		Cell c = new Cell(35);
+		assertTrue(c.getIndex() == 35);
+	}
+	
+	@Test
+	public void testCanBeLeftNow() {
+		Cell c = new Cell(35);
+		assertTrue(c.canBeLeftNow() == true);
+	}
+	
+	@Test
+	public void testIsRetaining() {
+		Cell c = new Cell(35);
+		assertTrue(c.isRetaining() == false);
+	}
+	
+	@Test
+	public void testIsBusy() {
+		Cell c = new Cell(35);
+		assertTrue(c.isBusy() == false);
+	}
+	
+	@Test
+	public void testIsBusy2() {
+		Cell c = new Cell(35);
+		Player p = new Player("titi");
+		p.setCell(c);
+		assertTrue(c.isBusy() == true);
+	}
+
+	@Test
+	public void testGetPlayer() {
+		Cell c = new Cell(35);
+		Player p = new Player("titi");
+		p.setCell(c);
+		assertTrue(c.getPlayer() == p);
+	}
+}
