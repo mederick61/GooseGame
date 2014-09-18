@@ -9,6 +9,7 @@ public class TestBoard {
 	@Test
 	public void test() {
 		assertTrue(1==1);
+		assertFalse(1==2);
 	}
 
 }
