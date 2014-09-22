@@ -32,7 +32,7 @@ public class Cell implements CellInterface {
 	@Override
 	public int handleMove(int diceThrow) {
 		// TODO Auto-generated method stub
-		return 0; // !!!
+		return this.index;
 	}
 
 	@Override

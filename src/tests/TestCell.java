@@ -24,6 +24,22 @@ public class TestCell {
 		Cell c = new Cell(35);
 		assertTrue(c.isRetaining() == false);
 	}
+
+	@Test
+	public void testGetPlayer() {
+		Cell c = new Cell(35);
+		Player p = new Player("titi");
+		p.setCell(c);
+		assertTrue(c.getPlayer() == p);
+	}
+	
+	@Test
+	public void testWelcome() {
+		Cell c = new Cell(35);
+		Player p = new Player("titi");
+		c.welcome(p);
+		assertTrue(c.getPlayer() == p);
+	}
 	
 	@Test
 	public void testIsBusy() {
@@ -38,12 +54,12 @@ public class TestCell {
 		p.setCell(c);
 		assertTrue(c.isBusy() == true);
 	}
-
+	
 	@Test
-	public void testGetPlayer() {
+	public void testIsBusy3() {
 		Cell c = new Cell(35);
 		Player p = new Player("titi");
-		p.setCell(c);
-		assertTrue(c.getPlayer() == p);
+		c.welcome(p);
+		assertFalse(c.isBusy() == false);
 	}
 }
