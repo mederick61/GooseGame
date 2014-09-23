@@ -13,7 +13,7 @@ public class Main {
 		
 		G.play();
 		
-		hgure
+		hgurehumg;
 
 
 	}
