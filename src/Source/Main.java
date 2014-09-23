@@ -13,9 +13,7 @@ public class Main {
 		
 		G.play();
 		
-		gyuo
-		
-		
+		hgure
 
 
 	}
