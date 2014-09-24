@@ -1,4 +1,5 @@
 package Source;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -34,40 +35,44 @@ public class Game
 		return PlayerList;
 	}
 	
+
+	
 	public void play()
 	{
-		while(!(this.isFinished(nbplayers)))
+		while(!(this.isFinished()))
 		{
 			Player p= this.board.nextPlayer(); 
-			
+		
 			Scanner sc = new Scanner(System.in);
-			System.out.println("appuyer sur une touche pour lancer les dÃ©s");
+			System.out.println("Appuyez sur une touche pour lancer les dés");
 			String h = sc.nextLine();
 			
 			if(p.getCell().canBeLeftNow()) // si le joueur peut bouger
 			{
+				Cell oldCell = p.getCell();
 				int diceResult= this.throwDie(); // Random entre 2 et 12
 				
-				System.out.println("Lancer de dÃ©s : "+diceResult);
+				System.out.println("Lancer de dés : "+diceResult);
 				
 				Cell reachedCell = this.board.getCell(this.board.normalize(p.getCell().getIndex()+diceResult)); // Case atteinte avant effet
 				
 				System.out.println("Case atteinte avant effet : "+reachedCell.getIndex());
 				
-				Cell realCell = this.board.getCell(this.board.normalize(reachedCell.handleMove(diceResult)));//Case atteinte aprÃ¨s effet
+				Cell realCell = this.board.getCell(this.board.normalize(reachedCell.handleMove(diceResult)));//Case atteinte après effet
 				
-				System.out.println("Case atteinte apres effet : "+realCell.getIndex());
+				System.out.println("Case atteinte après effet : "+realCell.getIndex());
 				
-				if(realCell.isBusy()) // si la case est occupÃ©e
+				if(realCell.isBusy()) // si la case est occupé
 				{
-					System.out.println("La case est dÃ©ja occupÃ© par : "+realCell.getPlayer().getName());
-					this.board.swapPlayer(p, realCell.getPlayer()); // Ã©change des deux joueurs
+					System.out.println("La case est déjà occupée par : "+realCell.getPlayer().getName());
+					this.board.swapPlayer(p, realCell.getPlayer()); // échange des deux joueurs
 				}
 				else
 				{
 					realCell.welcome(p); // la case "accueille" le joueur
 					p.setCell(realCell); // on affecte la case finale au joueur
-					System.out.println(p.getName()+" est maintenant Ã  la case : "+ realCell.getIndex());
+					System.out.println(p.getName()+" est maintenant à  la case : "+ realCell.getIndex());
+					board.getCell(oldCell.getIndex()).welcome(null);
 				}
 			}
 			else
@@ -78,9 +83,9 @@ public class Game
 		
 	}
 	
-	public boolean isFinished(int nbplayers)
+	public boolean isFinished()
 	{
-		for (int i=0; i<nbplayers; i++)
+		for (int i=0; i<Game.nbplayers; i++)
 		if(this.board.getPlayerList().get(i).getCell().getIndex() == 63)
 		{
 			System.out.println(this.board.getPlayerList().get(i).getName()+" WIN !!!");

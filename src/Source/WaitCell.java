@@ -20,8 +20,11 @@ public class WaitCell extends Cell {
 		{
 			return true;
 		}
-		else this.WaitingCounter--;
-		return false;
+		else
+		{
+			this.WaitingCounter--;
+			return false;
+		}
 	}
 	
 	@Override

@@ -12,8 +12,8 @@ public class TeleportCell extends Cell {
 	
 	@Override
 	public int handleMove(int diceThrow) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("TELEPORTATIOOOON");
+		return destination ;
 	}
 	
 

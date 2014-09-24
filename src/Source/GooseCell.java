@@ -11,7 +11,7 @@ public class GooseCell extends Cell {
 	
 	@Override
 	public int handleMove(int diceThrow) {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("CASE OIE !");
+		return this.getIndex()+diceThrow;
 	}
 }

@@ -18,19 +18,22 @@ public class Board
 		{
 			switch(i)
 			{
-			case 8 : this.CellsTab[i] = new GooseCell(i);
-			case 17 : this.CellsTab[i] = new GooseCell(i);
-			case 26 : this.CellsTab[i] = new GooseCell(i);
-			case 35 : this.CellsTab[i] = new GooseCell(i);
-			case 44 : this.CellsTab[i] = new GooseCell(i);
-			case 53 : this.CellsTab[i] = new GooseCell(i);
-			case 31 : this.CellsTab[i] = new TrapCell(i);
-			case 51 : this.CellsTab[i] = new TrapCell(i);
-			case 18 : this.CellsTab[i] = new WaitCell(i,2);
-			case 5 : this.CellsTab[i] = new TeleportCell(i, 11);
-			case 41 : this.CellsTab[i] = new TeleportCell(i, 29);
-			case 57 : this.CellsTab[i] = new TeleportCell(i, 1);
-			default : this.CellsTab[i]=new Cell(i);
+			case 9:
+			case 18:
+			case 27:
+			case 36:
+			case 45:
+			case 54:{this.CellsTab[i] = new GooseCell(i);break;}
+			
+			case 31:
+			case 52:{this.CellsTab[i] = new TrapCell(i);break;}
+			
+			case 19:{this.CellsTab[i] = new WaitCell(i,2);break;}
+			
+			case 6: {this.CellsTab[i] = new TeleportCell(i, 12);break;}
+			case 42: {this.CellsTab[i] = new TeleportCell(i, 30);break;}
+			case 58: {this.CellsTab[i] = new TeleportCell(i, 1);break;}
+			default: this.CellsTab[i]=new Cell(i);
 			}
 		}
 		this.currentPlayer = PlayerList.iterator();
@@ -38,19 +41,13 @@ public class Board
 	
 	public Player nextPlayer()
 	{
-		if (currentPlayer.hasNext() == true)
-		{
-			Player p = currentPlayer.next();
-			System.out.println("joueur suivant : "+ p.getName());
-			return p;
-		}
-		else
+		if (!(currentPlayer.hasNext()))
 		{
 			currentPlayer = PlayerList.iterator();
-			Player p = currentPlayer.next();
-			System.out.println("joueur suivant : "+ p.getName());
-			return p;
 		}
+		Player p = currentPlayer.next();
+		System.out.println("Joueur suivant : "+ p.getName());
+		return p;
 	}
 	
 	public ArrayList<Player> getPlayerList() {
