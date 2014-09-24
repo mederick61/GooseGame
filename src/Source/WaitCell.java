@@ -31,7 +31,7 @@ public class WaitCell extends Cell {
 	public void welcome(Player player) {
 		// TODO Auto-generated method stub
 		this.WaitingCounter = this.WaitingTime;
-		this.welcome(player);
+		super.welcome(player);
 	}
 
 }
