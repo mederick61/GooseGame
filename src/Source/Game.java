@@ -4,18 +4,54 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * <b>Game is the class that represents the Goose Game itself
+ * <p>
+ * A Game is characterized by the following informations :
+ * <ul>
+ * <li>A board, which represents the the Goose Game's board </li>
+ * <li>An amount of players for the current Game.</li>
+ * </ul>
+ * </p>
+ * 
+ * 
+ * @author Leo JUMEL et Brice NUZZO
+ * @version 1.0
+ */
 
 public class Game
 {
+    /**
+     * The Goose Game's board
+     */
 	private Board board;
+    /**
+     * The amount of players.
+     */
 	private static int nbplayers;
 	
+	/**
+     * Game constructor
+     * <p>
+     * A game is built from a board
+     * </p>
+     * 
+     * @param board
+     *            The board object.
+     */
 	public Game(Board board)
 	{
 		this.board=board;
 	}
 	
+	/**
+     * Game initializer.
+     * <p>
+     * This class method allows the user to select a number of players and initiate their names in the game. It returns a Player ArrayList used to initiate the Board.
+     * </p>
+     * 
+     * @return A Player ArrayList.
+     */
 	public static ArrayList<Player> initialize()
 	{
 		ArrayList<Player> PlayerList = new ArrayList<Player>();
@@ -36,7 +72,14 @@ public class Game
 	}
 	
 
-	
+	/**
+     * Game main method.
+     * <p>
+     * Handle the main part of the game process.
+     * </p>
+     * 
+     * 
+     */
 	public void play()
 	{
 		while(!(this.isFinished()))
@@ -44,7 +87,7 @@ public class Game
 			Player p= this.board.nextPlayer(); 
 		
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Appuyez sur une touche pour lancer les dés");
+			System.out.println("Press a key to roll the dice");
 			String h = sc.nextLine();
 			
 			if(p.getCell().canBeLeftNow()) // si le joueur peut bouger
@@ -52,37 +95,45 @@ public class Game
 				Cell oldCell = p.getCell();
 				int diceResult= this.throwDie(); // Random entre 2 et 12
 				
-				System.out.println("Lancer de dés : "+diceResult);
+				System.out.println("Dice throw : "+diceResult);
 				
 				Cell reachedCell = this.board.getCell(this.board.normalize(p.getCell().getIndex()+diceResult)); // Case atteinte avant effet
 				
-				System.out.println("Case atteinte avant effet : "+reachedCell.getIndex());
+				System.out.println("Reached cell before effect : "+reachedCell.getIndex());
 				
 				Cell realCell = this.board.getCell(this.board.normalize(reachedCell.handleMove(diceResult)));//Case atteinte après effet
 				
-				System.out.println("Case atteinte après effet : "+realCell.getIndex());
+				System.out.println("Reached cell after effect : "+realCell.getIndex());
 				
 				if(realCell.isBusy()) // si la case est occupé
 				{
-					System.out.println("La case est déjà occupée par : "+realCell.getPlayer().getName());
+					System.out.println("The Cell is already busy by : "+realCell.getPlayer().getName());
+					System.out.println(realCell.getPlayer().getName() + " and " + p.getName() + " have swap their cells");
 					this.board.swapPlayer(p, realCell.getPlayer()); // échange des deux joueurs
 				}
 				else
 				{
 					realCell.welcome(p); // la case "accueille" le joueur
 					p.setCell(realCell); // on affecte la case finale au joueur
-					System.out.println(p.getName()+" est maintenant à  la case : "+ realCell.getIndex());
+					System.out.println(p.getName()+" is now in cell : "+ realCell.getIndex());
 					board.getCell(oldCell.getIndex()).welcome(null);
 				}
 			}
 			else
 			{
-				System.out.println("Le joueur ne peut pas bouger"); // ajouter temps d'attente etc
+				System.out.println("Player can't move."); // ajouter temps d'attente etc
 			}
 		}
 		
 	}
-	
+	/**
+     * Game end conditions.
+     * <p>
+     * Allow the game to know if it is finished or not.
+     * </p>
+     * 
+     * @return True if the game is finished, false otherwise.
+     */
 	public boolean isFinished()
 	{
 		for (int i=0; i<Game.nbplayers; i++)
@@ -93,7 +144,14 @@ public class Game
 		}
 		return false;
 	}
-	
+	/**
+     * Dice throw.
+     * <p>
+     * Rolls two dice.
+     * </p>
+     * 
+     * @return an integer between 2 and 12.
+     */
 	public int throwDie()
 	{
 		Random rand = new Random();
