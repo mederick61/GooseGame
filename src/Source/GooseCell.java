@@ -5,7 +5,6 @@ public class GooseCell extends Cell {
 
 	public GooseCell(int idx) {
 		super(idx);
-		// TODO Auto-generated constructor stub
 	}
 
 	
