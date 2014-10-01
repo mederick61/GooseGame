@@ -4,6 +4,7 @@ package Source;
  * player by cell, the starting cell (index 0) excepted.
  */
 public interface CellInterface {
+	
 	/**
 	 * Indicates if a player occupying this cell can, at this turn, leave the
 	 * cell.

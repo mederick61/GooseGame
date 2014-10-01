@@ -1,5 +1,4 @@
 package Source;
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -101,15 +100,15 @@ public class Game
 				
 				System.out.println("Reached cell before effect : "+reachedCell.getIndex());
 				
-				Cell realCell = this.board.getCell(this.board.normalize(reachedCell.handleMove(diceResult)));//Case atteinte après effet
+				Cell realCell = this.board.getCell(this.board.normalize(reachedCell.handleMove(diceResult)));//Case atteinte aprï¿½s effet
 				
 				System.out.println("Reached cell after effect : "+realCell.getIndex());
 				
-				if(realCell.isBusy()) // si la case est occupé
+				if(realCell.isBusy()) // si la case est occupï¿½
 				{
 					System.out.println("The Cell is already busy by : "+realCell.getPlayer().getName());
 					System.out.println(realCell.getPlayer().getName() + " and " + p.getName() + " have swap their cells");
-					this.board.swapPlayer(p, realCell.getPlayer()); // échange des deux joueurs
+					this.board.swapPlayer(p, realCell.getPlayer()); // ï¿½change des deux joueurs
 				}
 				else
 				{
@@ -126,6 +125,7 @@ public class Game
 		}
 		
 	}
+	
 	/**
      * Game end conditions.
      * <p>

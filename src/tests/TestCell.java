@@ -10,7 +10,7 @@ public class TestCell {
 	@Test
 	public void testIndex() {
 		Cell c = new Cell(35);
-		assertTrue(c.getIndex() == 35);
+		assertEquals(c.getIndex(),35);
 	}
 	
 	@Test
@@ -30,7 +30,7 @@ public class TestCell {
 		Cell c = new Cell(35);
 		Player p = new Player("titi");
 		p.setCell(c);
-		assertTrue(c.getPlayer() == p);
+		assertEquals(c.getPlayer(), p);
 	}
 	
 	@Test
@@ -38,7 +38,7 @@ public class TestCell {
 		Cell c = new Cell(35);
 		Player p = new Player("titi");
 		c.welcome(p);
-		assertTrue(c.getPlayer() == p);
+		assertEquals(c.getPlayer(), p);
 	}
 	
 	@Test

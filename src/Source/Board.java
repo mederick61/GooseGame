@@ -46,7 +46,7 @@ public class Board
 			currentPlayer = PlayerList.iterator();
 		}
 		Player p = currentPlayer.next();
-		System.out.println("Joueur suivant : "+ p.getName());
+		System.out.println("Next player : "+ p.getName());
 		return p;
 	}
 	
