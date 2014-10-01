@@ -49,7 +49,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public boolean canBeLeftNow() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -62,7 +61,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public boolean isRetaining() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -74,7 +72,6 @@ public class Cell implements CellInterface {
 
 	@Override
 	public int getIndex() {
-		// TODO Auto-generated method stub
 		return this.index;
 	}
 
@@ -91,7 +88,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public int handleMove(int diceThrow) {
-		// TODO Auto-generated method stub
 		return this.index;
 	}
 
@@ -102,7 +98,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public boolean isBusy() {
-		// TODO Auto-generated method stub
 		if(this.getPlayer()!=null)
 		{
 			return true;
@@ -118,7 +113,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
 		return this.p;
 	}
 
@@ -130,7 +124,6 @@ public class Cell implements CellInterface {
 	 */
 	@Override
 	public void welcome(Player player) {
-		// TODO Auto-generated method stub
 		this.p=player;
 	}
 

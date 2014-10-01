@@ -10,12 +10,10 @@ public class WaitCell extends Cell {
 		super(idx);
 		this.WaitingTime = time;
 		this.WaitingCounter = time;
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public boolean canBeLeftNow() {
-		// TODO Auto-generated method stub
 		if (this.WaitingCounter == 0)
 		{
 			return true;
@@ -29,7 +27,6 @@ public class WaitCell extends Cell {
 	
 	@Override
 	public void welcome(Player player) {
-		// TODO Auto-generated method stub
 		this.WaitingCounter = this.WaitingTime;
 		super.welcome(player);
 	}
