@@ -44,7 +44,7 @@ public class WaitCell extends Cell {
 	 */
 	@Override
 	public boolean canBeLeftNow() {
-		if (this.WaitingCounter == 0)
+		if (this.WaitingCounter == 0) // If the wait
 		{
 			return true;
 		}
@@ -62,8 +62,16 @@ public class WaitCell extends Cell {
 	 */	
 	@Override
 	public void welcome(Player player) {
-		this.WaitingCounter = this.WaitingTime;
+		this.WaitingCounter = this.WaitingTime; // Each time a player come to a wait cell, the counter is initialized.
 		super.welcome(player);
 	}
-
+	
+	/**
+	 * Indicates the number of round before the player is released.
+	 *
+	 * @return a number between 0 and 2.
+	 */
+	public int getWaitingCounter() {
+		return WaitingCounter;
+	}
 }

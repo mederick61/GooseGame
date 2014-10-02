@@ -7,11 +7,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
 		ArrayList<Player> PlayerList = new ArrayList<Player>();
 		System.out.print("Please choose a Game Mode ( 1 : Automatic , 2 : Manual ) : ") ;
 		
-		int mode = sc.nextInt();
+		@SuppressWarnings("resource")
+		int mode = new Scanner(System.in).nextInt();
+
 		if(mode == 2)
 		{
 		 PlayerList = Game.initialize();
