@@ -1,5 +1,17 @@
 package Source;
-
+/**
+ * <b>A Teleport Cell send the Player to a specific Cell.
+ * <p>
+ * A player is characterized by the following informations :
+ * <ul>
+ * <li>A destination : the cell which will be reached. </li>
+ * </ul>
+ * </p>
+ * 
+ * 
+ * @author Leo JUMEL et Brice NUZZO
+ * @version 1.0
+ */
 
 public class TeleportCell extends Cell {
 
