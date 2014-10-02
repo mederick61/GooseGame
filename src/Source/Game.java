@@ -27,7 +27,7 @@ public class Game
     /**
      * The amount of players.
      */
-	private static int nbplayers;
+	private static int nbplayers=3;
 	
 	/**
      * Game constructor
@@ -79,21 +79,23 @@ public class Game
      * 
      * 
      */
-	public void play()
+	public void play(int mode)
 	{
 		while(!(this.isFinished()))
 		{
 			Player p= this.board.nextPlayer(); 
 		
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Press a key to roll the dice");
-			String h = sc.nextLine();
-			
+			if(mode==2)
+			{
+				System.out.println("Press ENTER to roll the dice");
+				String h = sc.nextLine();
+			}
 			if(p.getCell().canBeLeftNow()) // si le joueur peut bouger
 			{
 				Cell oldCell = p.getCell();
+				board.getCell(oldCell.getIndex()).welcome(null);
 				int diceResult= this.throwDie(); // Random entre 2 et 12
-				
 				System.out.println("Dice throw : "+diceResult);
 				
 				Cell reachedCell = this.board.getCell(this.board.normalize(p.getCell().getIndex()+diceResult)); // Case atteinte avant effet
@@ -112,16 +114,18 @@ public class Game
 				}
 				else
 				{
+					
 					realCell.welcome(p); // la case "accueille" le joueur
 					p.setCell(realCell); // on affecte la case finale au joueur
 					System.out.println(p.getName()+" is now in cell : "+ realCell.getIndex());
-					board.getCell(oldCell.getIndex()).welcome(null);
+					
 				}
 			}
 			else
 			{
 				System.out.println("Player can't move."); // ajouter temps d'attente etc
 			}
+
 		}
 		
 	}

@@ -17,10 +17,7 @@ package Source;
 
 public class Player 
 {
-	/**
-     * The amount of players.
-     */
-	private static int nbplayers;
+
 	
 	/**
      * The cell occupy by the player.

@@ -46,7 +46,7 @@ public class Board
 			currentPlayer = PlayerList.iterator();
 		}
 		Player p = currentPlayer.next();
-		System.out.println("Next player : "+ p.getName());
+		System.out.println("\n ================ "+ p.getName().toUpperCase()+ "'S TURN ================");
 		return p;
 	}
 	
@@ -69,12 +69,12 @@ public class Board
 		{
 			return 63-(idx-63);
 		}
-		else return idx; //TODO
+		else return idx; 
 	}
 	
 	public void swapPlayer(Player p1, Player p2)
 	{
-		//TODO
+
 		Cell c = new Cell(0);
 		
 		c=p2.getCell();
@@ -87,7 +87,7 @@ public class Board
 	
 	public Cell getEndCell()
 	{
-		return CellsTab[CellsTab.length-1]; //TODO
+		return CellsTab[CellsTab.length-1];
 	}
 	
 	
