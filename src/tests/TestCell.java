@@ -62,4 +62,12 @@ public class TestCell {
 		c.welcome(p);
 		assertFalse(c.isBusy() == false);
 	}
+	
+	@Test
+	public void testHandleMove() {
+		Cell c = new Cell(35);
+		Player p = new Player("titi");
+		p.setCell(c);
+		assertEquals(c.handleMove(12), 35);
+	}
 }
