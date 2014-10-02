@@ -44,7 +44,7 @@ public class GooseCell extends Cell {
      */
 	@Override
 	public int handleMove(int diceThrow) {
-		System.out.println("CASE OIE !");
+		System.out.println("GOOSE CELL !");
 		return this.getIndex()+diceThrow;
 	}
 }
